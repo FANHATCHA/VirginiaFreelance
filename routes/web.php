@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**** Start User Interface ****/
+Route::get('/', 'UserInterfaceController@home')->name('UI');
+/**** Start User Interface ****/
+
+/**** Start User destiantions ****/
+Route::get('/destination', 'UserInterfaceController@index')->name('destination');
+/**** Start User destinations ****/
 
 Auth::routes();
 
