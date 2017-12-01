@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slider;
 
 class UserInterfaceController extends Controller
 {
@@ -10,7 +11,10 @@ class UserInterfaceController extends Controller
   //User Interface Home
     public function home()
     {
-      return view('UserInterface.home');
+      $sliders = Slider::orderBy('created_at', 'desc')
+               ->first();
+      $title = Slider::orderBy('created_at', 'desc')->first();
+      return view('UserInterface.home', compact('sliders', 'title'));
 
     }
 
@@ -18,6 +22,12 @@ class UserInterfaceController extends Controller
       public function index()
       {
         return view('UserInterface.index');
+
+      }
+
+      public function test()
+      {
+        return view('dashboard.table');
 
       }
 

@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="ui_assets/img/favicon-nouvini.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Nouvini local agency: Travel with a local expert | Nouvini</title>
+    <title>Nouvini local agency: Travel with a local expert</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -129,6 +129,15 @@
                   <!--reserved-->
 
                     </p>
+
+
+<div class="carousel-reviews broun-block">
+<div class="container">
+<div id="carousel-reviews" class="carousel slide testi" data-ride="carousel">
+<div class="carousel-inner">
+<div class="item active">
+
+            </div>
                     <div class="card page-carousel">
 
                       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -138,10 +147,11 @@
                               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                           </ol>
                                            <div class="carousel-inner" role="listbox">
+
                                            <div class="carousel-item active">
-                                               <img class="d-block img-fluid" src="ui_assets\img\soroush-karimi.jpg" alt="First slide">
+                                               <img class="d-block img-fluid" src="/img/slider_images/{{$sliders->slider_image}}" alt="{{$sliders->decription}}">
                                             <div class="carousel-caption d-none d-md-block">
-                                                   <p>Somewhere</p>
+                                                   <p>{{$sliders->description}}</p>
                                                </div>
                                            </div>
                                            <div class="carousel-item">

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<link rel="icon" type="image/png" href="ui_assets/img/favicon-nouvini.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="ui_assets/img/favicon-nouvini.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Dashboard-Nouvni</title>
@@ -51,12 +51,18 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/home">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
+                    <a href="/ui-homepage">
+                        <i class="ti-home"></i>
+                        <p>UI-HomePage</p>
+                    </a>
+                </li>
+								<li>
                     <a href="user.html">
                         <i class="ti-user"></i>
                         <p>User Profile</p>

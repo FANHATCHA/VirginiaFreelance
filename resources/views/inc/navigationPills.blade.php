@@ -1,4 +1,4 @@
-<div class="col-md-8">
+<div class="col-md-7">
     <div class="tim-title">
         <h3>Tailor-made trips</h3>
     </div>
@@ -33,7 +33,27 @@
    </div>
  </div>
         </p></div>
-        <div class="tab-pane" id="profile" role="tabpanel"><p>Here is your profile.</p></div>
+        <div class="tab-pane" id="profile" role="tabpanel"><p>
+          <div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <img src="ui_assets\img\federico-beccari.jpg" alt="test" class="img-responsive">
+
+            <div class="carousel-caption">
+              <h1>Example headline.</h1>
+            </div>
+
+         </div>
+
+
+ </div>
+
+
+</div>
+
+        </p></div>
         <div class="tab-pane" id="messages" role="tabpanel"><p>Here are your messages.</p></div>
     </div>
 </div>

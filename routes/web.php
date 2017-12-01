@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', 'UserInterfaceController@test')->name('test');
 
 /**** Start User Interface ****/
 Route::get('/', 'UserInterfaceController@home')->name('UI');
@@ -25,8 +26,12 @@ Auth::routes();
 /******  start menu items***********/
 Route::group(['middleware' => ['auth']], function () {
 
+/**Resource controllers**/
+Route::resource('sliders', 'SliderCtrl');
+//*******************//
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/icons', 'HomeController@icons')->name('home');
+Route::get('/icons', 'HomeController@icons')->name('icons');
+Route::get('/ui-homepage', 'HomeController@uiHomepage')->name('ui-homepage');
 
 });
 /****** start menu items***********/

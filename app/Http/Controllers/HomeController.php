@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slider;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,16 @@ class HomeController extends Controller
     {
         return view('dashboard.dashboard');
     }
+
     public function icons()
     {
         return view('dashboard.icons');
     }
+
+    public function uiHomepage()
+    {
+       $sliders = Slider::orderBy('created_at', 'desc')->paginate(5);
+       return view('dashboard.UI-Homepage', compact('sliders'));
+   }
+
 }

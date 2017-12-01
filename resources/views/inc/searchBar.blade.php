@@ -13,10 +13,9 @@
       </div></h2>
 
                         <div class="text-center col-md-12 col-lg-8">
-                           <h3>Trending destinations of the week</h3>
+                           <h3>{{ $title->title }}</h3>
                        </div>
                     </div>
 
                 </div>
             </div>
-          
