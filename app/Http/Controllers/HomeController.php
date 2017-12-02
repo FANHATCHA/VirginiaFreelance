@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Slider;
+use App\HotDeals;
+use DB;
 
 class HomeController extends Controller
 {
@@ -34,8 +36,26 @@ class HomeController extends Controller
 
     public function uiHomepage()
     {
-       $sliders = Slider::orderBy('created_at', 'desc')->paginate(5);
-       return view('dashboard.UI-Homepage', compact('sliders'));
+      /**Slider display**/
+       $sliders = Slider::orderBy('created_at', 'desc')->whereBetween('slider_position', [1, 4])->paginate(3);
+       $sliderOne = DB::table('sliders')->where('slider_position', 1)->get();
+       $sliderTwo = DB::table('sliders')->where('slider_position', 2)->first();
+       $sliderThree = DB::table('sliders')->where('slider_position',3)->first();
+       $sliderFour = DB::table('sliders')->where('slider_position',4)->first();
+
+       /**Hot deals display**/
+       $hotdeals = HotDeals::orderBy('created_at', 'desc')->paginate(3);
+       return view('dashboard.UI-Homepage', compact(
+         'sliders',
+         'sliderOne',
+         'sliderTwo',
+         'sliderThree',
+         'sliderFour',
+         'hotdeals'
+       ));
    }
+
+
+
 
 }

@@ -189,20 +189,28 @@
 															<h4 class="title">Sliders added</h4>
 													</div>
 							    @if(count($sliders) > 0)
-							        @foreach($sliders as $post)
-							            <div class="well">
-							                <div class="row">
-							                    <div class="col-md-4 col-sm-4">
-							                        <img style="width:100%" src="/img/slider_images/{{$post->slider_image}}">
-							                    </div>
-							                    <div class="col-md-8 col-sm-8">
-							                        <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-							                        <small>Written on {{$post->created_at}} by {{$post->username}}</small>
-																			<p>{!!$post->description!!}</p>
-							                    </div>
-							                </div>
-							            </div>
-							        @endforeach
+
+							           <table class="table table-striped">
+													 <tr>
+														<th>Slider Position</th>
+														<th>Description</th>
+														<th>Image</th>
+												</tr>
+												@foreach($sliders as $slider)
+													<tr>
+
+														 <td>
+																{{ $slider->slider_position}}
+														 </td>
+														 <td>
+																{!! $slider->description !!}
+														 </td>
+														 <td>
+																<img  style="width:100%"class="img-rounded" src="/img/slider_images/{{$slider->slider_image }}" alt="{{$slider->description}}">
+														 </td>
+													</tr>
+														   @endforeach
+												 </table>
 							        {{$sliders->links()}}
 							    @else
 							        <p>No sliders found!</p>
@@ -284,8 +292,15 @@
 																	 <div class="row">
 																	<div class="col-md-12">
 																	<div class="form-group">
-																	<label>Title</label>
-	                                 {{Form::text('title', '', ['class' => 'form-control border-input', 'placeholder' => 'Title'])}}
+																	<label>Slider Position</label>
+																		<select class="form-control border-input" name="slider_position" id="slider_position" required>
+																		<option disabled="" selected=""></option>
+																		<option value="1"> 1</option>
+																		<option value="2"> 2</option>
+																		<option value="3"> 3</option>
+																		<option value="4"> 4</option>
+															</select>
+
 
 																</textarea>
 															</div>
@@ -293,7 +308,7 @@
 																	</div>
 																	<div class="row">
 																			<div class="col-md-5">
-																					<div class="form-group">
+																					<div class="form-group border-input">
 																							<label>Upload image</label>
 																							{{Form::file('slider_image')}}
 
@@ -302,7 +317,7 @@
 																	</div>
                                     <div class="row">
                                         <div class="col-md-10">
-                                            <div class="form-group">
+                                            <div class="form-group border-input">
                                                 <label>Description</label>
 																								{{Form::textarea('description', '', ['id' => 'article-ckeditor','rows' => '5', 'class' => 'form-control border-input', 'placeholder' => 'Description'])}}
                                             </div>
@@ -320,7 +335,7 @@
                         </div>
                     </div>
 
-
+                  @include('inc.hotDeals')
                 </div>
             </div>
         </div>
@@ -382,6 +397,9 @@
 	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 	<script>
 			CKEDITOR.replace( 'article-ckeditor' );
+	</script>
+	<script>
+			CKEDITOR.replace( 'hotdeals-ckeditor' );
 	</script>
 
 </html>

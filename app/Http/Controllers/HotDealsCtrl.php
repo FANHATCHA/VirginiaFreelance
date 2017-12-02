@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Input;
+//use Illuminate\Support\Facades\Input;
 use DB;
-use App\Slider;
+use App\HotDeals;
 
-class SliderCtrl extends Controller
+class HotDealsCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class SliderCtrl extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -27,7 +27,7 @@ class SliderCtrl extends Controller
      */
     public function create()
     {
-        //
+      //
     }
 
     /**
@@ -39,59 +39,39 @@ class SliderCtrl extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-      'slider_position' => 'required',
+      'hotdeals_image' => 'image|nullable|max:1999',
+      'hotDealTitle' => 'required',
       'description' => 'required',
-      'slider_image' => 'image|nullable|max:1999'
+      'numberofStars' => 'required|integer',
+      'price' => 'required|',
     ]);
 
 // Handle File Upload
-    if($request->hasFile('slider_image')){
+    if($request->hasFile('hotdeals_image')){
       // Get filename with the extension
-      $filenameWithExt = $request->file('slider_image')->getClientOriginalName();
+      $filenameWithExt = $request->file('hotdeals_image')->getClientOriginalName();
       // Get just filename
       $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
       // Get just ext
-      $extension = $request->file('slider_image')->getClientOriginalExtension();
+      $extension = $request->file('hotdeals_image')->getClientOriginalExtension();
       // Filename to store
       $fileNameToStore= $filename.'_'.time().'.'.$extension;
       // Upload Image
       //$path = $request->file('slider_image')->storeAs('public/img', $fileNameToStore);
-      $path = $request->file('slider_image')->move('img/slider_images/', $fileNameToStore);
+      $path = $request->file('hotdeals_image')->move('img/hotdeals_images/', $fileNameToStore);
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
-    // Create Post
-    /*$post = new Slider;
-    $post->slider_position = $request->input('slider_position');
+    // Create   hot deal
+    $post = new HotDeals;
+    $post->hotdeals_image = $fileNameToStore;
+    $post->hotDealTitle = $request->input('hotDealTitle');
     $post->description = $request->input('description');
+    $post->numberofStars = $request->input('numberofStars');
+    $post->price = $request->input('price');
     $post->username = auth()->user()->name;
-    $post->slider_image = $fileNameToStore;
     $post->save();
-    return back()->withInput()->with('success','Slider added successfully !');*/
-
-    $user = Slider::where('slider_position', '=', Input::get('slider_position'))->first();
-       if ($user === null)
-       {
-         // Create Post
-         $post = new Slider;
-         $post->slider_position = $request->input('slider_position');
-         $post->description = $request->input('description');
-         $post->username = auth()->user()->name;
-         $post->slider_image = $fileNameToStore;
-         $post->save();
-         return back()->withInput()->with('success','Slider created successfully !');
-       }
-       else{
-         DB::table('sliders')
-               ->where('slider_position','=', Input::get('slider_position'))
-               ->update([
-                 'slider_position' => $request->input('slider_position'),
-                 'description' => $request->input('description'),
-                 'slider_image' => $slider_image = $fileNameToStore,
-               ]);
-               return back()->withInput()->with('success','Updated successfully !');
-
-       }
+    return back()->with('success','Hot deal added successfully !');
     }
 
     /**

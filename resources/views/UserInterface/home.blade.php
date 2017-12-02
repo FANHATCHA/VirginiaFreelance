@@ -129,13 +129,23 @@
                   <!--reserved-->
 
                     </p>
+                    <div class="tim-title">
+                      <h3> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Trending destinations of the week</h3>
+                      <span class="label label-default">Cuba</span>
+                           <span class="label label-primary">Costa</span>
+                           <span class="label label-info">Australia</span>
+                           <span class="label label-success">Tanzania</span>
+                           <span class="label label-warning">Vietnam</span>
+                           <span class="label label-danger">New zeland</span>
+                          <br/>
 
-
-<div class="carousel-reviews broun-block">
-<div class="container">
-<div id="carousel-reviews" class="carousel slide testi" data-ride="carousel">
-<div class="carousel-inner">
-<div class="item active">
+                        </div>
+                        <br/>
+          <div class="carousel-reviews broun-block">
+          <div class="container">
+          <div id="carousel-reviews" class="carousel slide testi" data-ride="carousel">
+          <div class="carousel-inner">
+          <div class="item active">
 
             </div>
                     <div class="card page-carousel">
@@ -145,27 +155,65 @@
                               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                           </ol>
                                            <div class="carousel-inner" role="listbox">
-
+                                        @if(count($sliderOne) > 0)
+                                        @foreach ($sliderOne as $key => $one)
                                            <div class="carousel-item active">
-                                               <img class="d-block img-fluid" src="/img/slider_images/{{$sliders->slider_image}}" alt="{{$sliders->decription}}">
+                                               <img class="d-block img-fluid" src="/img/slider_images/{{$one->slider_image }}" alt="{{$one->description}}">
                                             <div class="carousel-caption d-none d-md-block">
-                                                   <p>{{$sliders->description}}</p>
+                                                   <p>{!! $one->description !!}</p>
                                                </div>
                                            </div>
+                                             @endforeach
+                                           @else
+                                              <p><div class="alert alert-danger" role="alert">
+                                            <strong>No slider 1 image found!</strong>
+                                            </div></p>
+                                            @endif
+                                            @if(count($sliderTwo) > 0)
+                                            @foreach ($sliderTwo as $key => $two)
                                            <div class="carousel-item">
-                                               <img class="d-block img-fluid" src="ui_assets\img\federico-beccari.jpg" alt="Second slide">
+                                               <img class="d-block img-fluid" src="/img/slider_images/{{$two->slider_image }}" alt="{{$two->description}}">
                                             <div class="carousel-caption d-none d-md-block">
-                                                <p>Somewhere else</p>
+                                                <p>{!! $two->description !!}</p>
                                             </div>
                                            </div>
+                                         @endforeach
+                                       @else
+                                          <p><div class="alert alert-danger" role="alert">
+                                        <strong>No slider 2 image found!</strong>
+                                        </div></p>
+                                        @endif
+                                        @if(count($sliderThree) > 0)
+                                        @foreach ($sliderThree as $key => $three)
                                            <div class="carousel-item">
-                                               <img class="d-block img-fluid" src="ui_assets\img\joshua-stannard.jpg" alt="Third slide">
+                                               <img class="d-block img-fluid" src="/img/slider_images/{{$three->slider_image }}" alt="{{$three->description}}">
                                             <div class="carousel-caption d-none d-md-block">
-                                                <p>Here it is</p>
+                                                <p>{!! $three->description !!}</p>
                                             </div>
                                            </div>
+                                         @endforeach
+                                       @else
+                                          <p><div class="alert alert-danger" role="alert">
+                                        <strong>No slider 3 image found!</strong>
+                                        </div></p>
+                                        @endif
+                                        @if(count($sliderFour) > 0)
+                                        @foreach ($sliderFour as $key => $four)
+                                           <div class="carousel-item">
+                                               <img class="d-block img-fluid" src="/img/slider_images/{{$four->slider_image }}" alt="{{$four->description}}">
+                                            <div class="carousel-caption d-none d-md-block">
+                                                <p>{!! $four->description !!}</p>
+                                            </div>
+                                           </div>
+                                         @endforeach
+                                       @else
+                                          <p><div class="alert alert-danger" role="alert">
+                                        <strong>No slider 4 image found!</strong>
+                                        </div></p>
+                                        @endif
                                            </div>
 
                                            <a class="left carousel-control carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -188,10 +236,101 @@
                 </div>
 
               </div>
-              @include('inc.askForQuotes')
 
+                <div class="tim-title">
+                  <h5>  <img src="img/HotDeals.gif" alt="Hot Deals" width="200px"/> </h5>
+                </div>
+
+                <div class="row">
+                  @if(count($hotdeals) > 0)
+                   @foreach ($hotdeals as $key => $hotdeal)
+                  <div class="card" style="width: 15rem; margin-left:12px;">
+
+                    <a href="#{{$hotdeal->id}}"><img src="img/hotdeals_images/{{$hotdeal->hotdeals_image }}" alt="{{$hotdeal->hotDealTitle}}" class="img-fluid img-rounded" data-toggle="modal" data-target="#{{ $hotdeal->id }}"> </a></br></br>
+                    <div class="card-block">
+
+                        <h4 class="card-title" style="color:#f5593d;"><b>{{ $hotdeal->hotDealTitle }}</b></h4>
+                      <p class="card-text">{!! str_limit($hotdeal->description, 100) !!}</p>
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="star-rating" style="line-height:32px; font-size:1.25em; color:yellow;">
+                              @if ($hotdeal->numberofStars == 1)
+                                <span class="fa fa-star-o" data-rating="1"></span>
+                              @elseif ($hotdeal->numberofStars == 2)
+                              <span class="fa fa-star-o" data-rating="1"></span>
+                              <span class="fa fa-star-o" data-rating="2"></span>
+                            @elseif ($hotdeal->numberofStars == 3)
+                              <span class="fa fa-star-o" data-rating="1"></span>
+                              <span class="fa fa-star-o" data-rating="2"></span>
+                              <span class="fa fa-star-o" data-rating="3"></span>
+                            @elseif ($hotdeal->numberofStars == 4)
+                              <span class="fa fa-star-o" data-rating="1"></span>
+                              <span class="fa fa-star-o" data-rating="2"></span>
+                              <span class="fa fa-star-o" data-rating="3"></span>
+                              <span class="fa fa-star-o" data-rating="4"></span>
+                            @elseif ($hotdeal->numberofStars == 5)
+                              <span class="fa fa-star-o" data-rating="1"></span>
+                              <span class="fa fa-star-o" data-rating="2"></span>
+                              <span class="fa fa-star-o" data-rating="3"></span>
+                              <span class="fa fa-star-o" data-rating="4"></span>
+                              <span class="fa fa-star-o" data-rating="5"></span>
+                            @endif
+                              <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                            </div>
+                          </div>
+                        </div>
+                     </div>
+                     <h6 class="note text-success">{{ $hotdeal->price }}</h6>
+                     <a href="#" class="btn btn btn-sm btn-info btn-round"><i class="fa fa-search" aria-hidden="true"></i> Explore</a>
+                     </br></br>
+                     <a href="https://quotations.nouvini.com/getQuotation" class="btn btn btn-sm btn-danger btn-round"><i class="fa fa-plane" aria-hidden="true"></i> Ask for a quote</a>
+                    </div>
+                  </div>
+                  <!-- Modal -->
+                            <div class="modal fade" id="{{$hotdeal->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h5 class="modal-title text-center" id="exampleModalLabel">Unsual travel</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                              <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <div class="text-center">
+                                                      <img src="img/hotdeals_images/{{$hotdeal->hotdeals_image }}" alt="{{$hotdeal->hotDealTitle}}" class="img-fluid"/>
+                                                       </div>
+                                                      </div>
+                                                    <p>
+                                                      {!!$hotdeal->description !!}
+                                                    </p>
+                                                      <div class="modal-footer">
+                                                              <div class="left-side">
+                                                                  <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Close</button>
+                                                              </div>
+                                                              <div class="divider"></div>
+                                                              <div class="right-side">
+                                                                <a href="/test">  <button type="button" class="btn btn-danger btn-link">Explore more</button></a>
+                                                              </div>
+                                                          </div>
+                                                  </div>
+                                              </div>
+                            </div>
+                   @endforeach
+                   {{ $hotdeals->links() }}
+                 @else
+                    <p><div class="alert alert-danger" role="alert">
+                  <strong>No Hot deals found!</strong>
+                  </div></p>
+                  @endif
             </div>
 
+
+
+
+            </div>
+</div>
 
         </div>
 	</div>

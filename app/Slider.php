@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Slider extends Model
 {
-    protected $fillable = ['username', 'title','slider_image', 'description'];
+    protected $fillable = ['username', 'slider_position','slider_image', 'description'];
     // Table Name
     protected $table = 'sliders';
     // Primary Key

@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 /**Resource controllers**/
 Route::resource('sliders', 'SliderCtrl');
+Route::resource('hotdeals', 'HotDealsCtrl');
 //*******************//
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/icons', 'HomeController@icons')->name('icons');
