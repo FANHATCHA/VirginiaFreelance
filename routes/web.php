@@ -16,9 +16,11 @@ Route::get('/test', 'UserInterfaceController@test')->name('test');
 Route::get('/', 'UserInterfaceController@home')->name('UI');
 /**** Start User Interface ****/
 
-/**** Start User destiantions ****/
-Route::get('/destination', 'UserInterfaceController@index')->name('destination');
 /**** Start User destinations ****/
+Route::get('/ui-destination/{slug}', 'UserInterfaceController@destinations')->name('ui-destination')->where('slug', '[\w\d\-\_]+');
+
+/**** Start User destinations ****/
+
 
 Auth::routes();
 
@@ -29,10 +31,18 @@ Route::group(['middleware' => ['auth']], function () {
 /**Resource controllers**/
 Route::resource('sliders', 'SliderCtrl');
 Route::resource('hotdeals', 'HotDealsCtrl');
+Route::resource('destination', 'AddDestinationCtrl');
+Route::get('/destinations/{id}', 'AddDestinationCtrl@show')->name('destinations');
+Route::resource('internal-slider', 'InternalSliderCtrl');
 //*******************//
+
+/** Exception route to middleware**/
+//Route::get('/destination/{slug}', 'UserInterfaceController@destinations')->name('destinations');
+/**********************************************************/
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/icons', 'HomeController@icons')->name('icons');
 Route::get('/ui-homepage', 'HomeController@uiHomepage')->name('ui-homepage');
+Route::get('/destinations', 'HomeController@destinations')->name('destinations');
 
 });
 /****** start menu items***********/

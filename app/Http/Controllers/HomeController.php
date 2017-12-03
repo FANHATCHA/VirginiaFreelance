@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slider;
 use App\HotDeals;
+use App\AddDestination;
 use DB;
 
 class HomeController extends Controller
@@ -45,6 +46,7 @@ class HomeController extends Controller
 
        /**Hot deals display**/
        $hotdeals = HotDeals::orderBy('created_at', 'desc')->paginate(3);
+
        return view('dashboard.UI-Homepage', compact(
          'sliders',
          'sliderOne',
@@ -55,7 +57,14 @@ class HomeController extends Controller
        ));
    }
 
+   public function destinations()
+   {
 
-
+   /**destinations display**/
+   $destinations = AddDestination::orderBy('created_at', 'desc')->paginate(5);
+   return view('dashboard.destinations', compact(
+     'destinations'
+   ));
+   }
 
 }

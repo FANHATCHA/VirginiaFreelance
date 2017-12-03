@@ -20,12 +20,6 @@
 
     <!--  Paper Dashboard core CSS    -->
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="assets/css/demo.css" rel="stylesheet" />
-
-
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -50,7 +44,7 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="/home">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
@@ -62,7 +56,7 @@
                         <p>UI-HomePage</p>
                     </a>
                 </li>
-								<li>
+								<li class="active">
                     <a href="/destinations">
                         <i class="ti-location-pin"></i>
                         <p>Destinations</p>
@@ -118,7 +112,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">Destinations</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -287,24 +281,71 @@
                 <div class="row">
 
                     <div class="col-md-12">
+											@include('inc.messages')
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Users Behavior</h4>
-                                <p class="category">24 Hours performance</p>
+                                <h4 class="title">Add a destination</h4>
+                                <p class="category">Section 1</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-reload"></i> Updated 3 minutes ago
-                                    </div>
-                                </div>
+															{!! Form::open(['action' => 'AddDestinationCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+															{{ csrf_field() }}
+															<div class="row">
+																	<div class="col-md-12">
+																			<div class="form-group border-input">
+																					<label>Destination Name</label>
+																					{{Form::text('destinationName', '', ['class' => 'form-control border-input','required'])}}
+
+																			</div>
+																	</div>
+															</div>
+															<div class="row">
+																	<div class="col-md-5">
+																			<div class="form-group border-input">
+																					<label>Destination Image Icon</label>
+																					{{Form::file('destImgIcon')}}
+
+																			</div>
+																	</div>
+															</div>
+															<div class="row">
+																	<div class="col-md-5">
+																			<div class="form-group border-input">
+																					<label>Local agent Name</label>
+																					{{Form::text('localAgentName', '', ['class' => 'form-control border-input','required'])}}
+
+																			</div>
+																	</div>
+															</div>
+															<div class="row">
+																	<div class="col-md-5">
+																			<div class="form-group border-input">
+																					<label>Local Agent Image</label>
+																					{{Form::file('localAgentImg')}}
+
+																			</div>
+																	</div>
+															</div>
+																<div class="row">
+																		<div class="col-md-10">
+																				<div class="form-group border-input">
+																						<label>Local Agent Summary</label>
+																						{{Form::textarea('description', '', ['id' => 'localAgent-ckeditor','rows' => '5', 'class' => 'form-control border-input', 'placeholder' => 'Description'])}}
+																				</div>
+																		</div>
+																</div>
+																<div class="row">
+																		<div class="col-md-10">
+																				<div class="form-group border-input">
+																						<label>Slug</label>
+																						{{Form::text('slug', '', ['class' => 'form-control border-input','required'])}}
+																		</div>
+																</div>
+																</div>
+
+																<div class="text-center">
+																		{{Form::submit('Submit', ['class'=>'btn btn-info btn-fill btn-wd'])}}
+																		 {!! Form::close() !!}
                             </div>
                         </div>
                     </div>
@@ -313,23 +354,40 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Email Statistics</h4>
-                                <p class="category">Last Campaign Performance</p>
+                                <h4 class="title">Destinations</h4>
+
                             </div>
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+															@if(count($destinations) > 0)
+																<table class="table table-striped">
+	                         <tr>
+	                             <th>Destination Name</th>
+	                             <th>Duration</th>
+	                             <th>Edit</th>
+															 <th>Add </th>
 
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-timer"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
+	                         </tr>
+	                         @foreach($destinations as $destination)
+														 <tr>
+                              <td><a href="/destinations/{{$destination->id}}">{{$destination->destinationName}}</a></td>
+															<td>{{$destination->created_at->diffForHumans()}}</td>
+															<td>
+																<a href="/destinations/{{$destination->id}}/edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+																<td>
+																	<a href="/destinations/{{$destination->id}}/edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>
+
+														</tr>
+															@endforeach
+											{{$destinations->links()}}
+									        </table>
+													@else
+															<p>No destination Found!</p>
+													@endif
+															<!-- Button trigger modal -->
+															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+															Launch demo modal
+															</button>
                             </div>
                         </div>
                     </div>
@@ -390,8 +448,26 @@
 
     </div>
 </div>
-
-
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+		</div>
 </body>
 
     <!--   Core JS Files   -->
@@ -409,28 +485,14 @@
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="assets/js/paper-dashboard.js"></script>
-
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
-
-	<script type="text/javascript">
-    	$(document).ready(function(){
-
-        	demo.initChartist();
-
-        	$.notify({
-            	icon: 'ti-gift',
-            	message: "Hey <b>{{ Auth::user()->name }} </b> - Happy to see you again!"
-
-            },{
-                type: 'success',
-                timer: 4000
-            });
-
-    	});
+		<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+	<script>
+			CKEDITOR.replace( 'localAgent-ckeditor' );
+	</script>
+	<script>
+			$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').focus()
+		})
 	</script>
 
 </html>

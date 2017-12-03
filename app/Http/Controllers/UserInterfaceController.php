@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Slider;
 use App\HotDeals;
+use App\AddDestination;
 use DB;
 
 class UserInterfaceController extends Controller
@@ -21,24 +22,49 @@ class UserInterfaceController extends Controller
 
       /**Hot deals display**/
       $hotdeals = HotDeals::orderBy('created_at', 'desc')->Paginate(6);
+      /**destinations display**/
+      $destinations = AddDestination::all();
       return view('UserInterface.home', compact(
         'sliders',
         'sliderOne',
         'sliderTwo',
         'sliderThree',
         'sliderFour',
-        'hotdeals'
+        'hotdeals',
+        'destinations'
       ));
 
 
     }
 
-    //User Interface destiantion
-      public function index()
-      {
-        return view('UserInterface.index');
 
-      }
+          //User Interface destinations via slugs
+            public function destinations($slug)
+            {
+              $posts = AddDestination::where('slug', '=', $slug)->first();
+              /**Internal sliders display**/
+              $sliderOne = DB::table('internal_sliders')
+              ->where('slider_position', 1)
+              ->get();
+              $sliderTwo = DB::table('internal_sliders')
+              ->where('slider_position', 2)
+              ->get();
+              $sliderThree = DB::table('internal_sliders')
+              ->where('slider_position', 3)
+              ->get();
+              $sliderFour = DB::table('internal_sliders')
+              ->where('slider_position', 4)
+              ->get();
+
+              return view('UserInterface.index', compact(
+                'posts',
+                'sliderOne',
+                'sliderTwo',
+                'sliderThree',
+                'sliderFour'
+            ));
+
+            }
 
       public function test()
       {

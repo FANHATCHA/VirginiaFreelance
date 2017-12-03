@@ -83,28 +83,18 @@
          <b class="caret"></b>
      </a>
      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
          <li class="dropdown-header">Choose a destination</li>
          <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Australia</a>
+          @if(count($destinations) > 0)
+           @foreach ($destinations as $key => $destination)
+             <a class="dropdown-item" href="ui-destination/{{ $destination->slug}}">{{ str_limit($destination->destinationName, 20) }}</a>
+             <div class="dropdown-divider"></div>
+           @endforeach
+         @else
+         <a class="dropdown-item" href="#pk">No destinations found!</a>
          <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Costa Rica</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Cuba</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">India</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Maurtius</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Sri Lanka</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Thailand</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Uzbekistan</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">Vietnam</a>
-         <div class="dropdown-divider"></div>
-         <a class="dropdown-item" href="#pk">New Zeland</a>
-
+       @endif
        </ul>
      </li>
             </div>
