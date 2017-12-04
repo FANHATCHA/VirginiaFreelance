@@ -42,25 +42,25 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="{{ $twitter->url }}" target="_blank">
                             <i class="fa fa-twitter" style="color:#51bcda;"></i>
                             <p class="d-lg-none">Twitter</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="{{ $facebook->url }}" target="_blank">
                             <i class="fa fa-facebook-square" style="color:#3b5998;"></i>
                             <p class="d-lg-none">Facebook</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="{{ $Instagram->url }}" target="_blank">
                             <i class="fa fa-instagram" style="color:#8a3ab9;"></i>
                             <p class="d-lg-none">Instagram</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Star on Google+" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit" target="_blank">
+                        <a class="nav-link" rel="tooltip" title="Star on Google+" data-placement="bottom" href="{{ $googlePlus->url }}" target="_blank">
                             <i class="fa fa-google-plus" style="color:#f5593d;"></i>
                             <p class="d-lg-none">Google+</p>
                         </a>
@@ -122,7 +122,11 @@
                     <div class="tim-title">
                       <h3> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Trending destinations of the week</h3>
                       <span class="label label-default">Cuba</span>
-                           <span class="label label-primary">Costa</span>
+                      <button type="button" class="btn label btn-danger btn-round" a data-container="body" data-toggle="popover" data-placement="top" data-title="Popover on top"
+                      data-content="Here will be some very useful information about this popove <img src='/img/slider_images/'> ">on top</button>
+                           <span class="label label-primary" ata-container="body" data-toggle="popover" data-placement="top" data-title="Popover on top" data-content="Here will be some very useful information about this popover.">
+                             Costa
+                           </span>
                            <span class="label label-info">Australia</span>
                            <span class="label label-success">Tanzania</span>
                            <span class="label label-warning">Vietnam</span>

@@ -384,32 +384,20 @@
 													@else
 															<p>No destination Found!</p>
 													@endif
-															<!-- Button trigger modal -->
-															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-															Launch demo modal
-															</button>
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
-                                <h4 class="title">2015 Sales</h4>
-                                <p class="category">All products including Taxes</p>
+                                <h4 class="title">Social</h4>
                             </div>
                             <div class="content">
-                                <div id="chartActivity" class="ct-chart"></div>
-
-                                <div class="footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="ti-check"></i> Data information certified
-                                    </div>
-                                </div>
+															<!-- Button trigger modal -->
+															<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+															Add a social media Page
+															</button>
                             </div>
                         </div>
                     </div>
@@ -453,17 +441,41 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Add a social media Page</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					...
+					{!! Form::open(['action' => 'socialMediaCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+					{{ csrf_field() }}
+					<div class="row">
+				 <div class="col-md-4">
+				 <div class="form-group">
+				 <label>Social media</label>
+					 <select class="form-control border-input" name="socialMedia" id="socialMedia" required>
+					 <option disabled="" selected=""></option>
+					 <option value="twitter">twitter</option>
+					 <option value="facebook">facebook</option>
+					 <option value="Instagram"> Instagram</option>
+					 <option value="Google+"> Google+</option>
+					 </select>
+				 </div>
+				</div>
+				 </div>
+				 <div class="row">
+						 <div class="col-md-10">
+								 <div class="form-group border-input">
+										 <label>URL</label>
+										 {{Form::text('url', '', ['class' => 'form-control border-input','required'])}}
+						 </div>
+				 </div>
+				 </div>
+					{{Form::submit('Submit', ['class'=>'btn btn-info btn-fill btn-wd'])}}
+					 {!! Form::close() !!}
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>

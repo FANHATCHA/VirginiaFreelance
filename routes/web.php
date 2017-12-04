@@ -34,6 +34,9 @@ Route::resource('hotdeals', 'HotDealsCtrl');
 Route::resource('destination', 'AddDestinationCtrl');
 Route::get('/destinations/{id}', 'AddDestinationCtrl@show')->name('destinations');
 Route::resource('internal-slider', 'InternalSliderCtrl');
+Route::resource('tailor-made-trip', 'TailorMadeTripCtrl');
+Route::resource('client-experience', 'UXCtrl');
+Route::resource('social-media', 'socialMediaCtrl');
 //*******************//
 
 /** Exception route to middleware**/
