@@ -9,7 +9,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color:white;
-  font-weight: bold;
 
 }
 /* Bottom left text */
@@ -27,11 +26,11 @@
 }
 </style>
 <div class="card" style="margin-left:20px;">
-    <h3 class="text-center">{{ $clientExp->headerTitle}}</h3>
-  <img src="../img/02_an.jpg" class="img-rounded" alt="{{$clientExp->description}}" style="width:20rem;">
-  <button type="button" class="bottom-right btn btn btn-sm btn-info btn-round">{{$clientExp->btnOneName}}</button>
-  <button type="button" class=" bottom-left btn btn btn-sm btn-success btn-round">{{$clientExp->btnTwoName}}</button>
-  <h4 class="text-center centered">{{ $clientExp->subTitle}}</h4>
+    <h3 class="text-center" style="font-weight: bold; font-size:15px;">{{ $clientExp->headerTitle}}</h3>
+  <img src="/img/ux_images/{{$clientExp->ux_image }}" class="img-rounded" alt="{{$clientExp->description}}" style="width:20rem;">
+  <button type="button" class="bottom-right btn btn btn-sm btn-default btn-round">{{$clientExp->btnOneName}}</button></br>
+  <button type="button" class=" bottom-left btn btn btn-sm btn-warning btn-round">{{$clientExp->btnTwoName}}</button>
+  <h4 class="text-center centered">{!! $clientExp->subTitle!!}</h4>
 </div>
 @endforeach
 {{ $clientExps->links() }}

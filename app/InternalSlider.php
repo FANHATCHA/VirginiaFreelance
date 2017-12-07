@@ -13,9 +13,4 @@ class InternalSlider extends Model
   public $primaryKey = 'id';
   // Timestamps
   public $timestamps = true;
-
-  public function destinations()
-{
-  return $this->belongsTo(AddDestination::class, 'destination_slug', 'slug');
-}
 }

@@ -60,9 +60,9 @@ class InternalSliderCtrl extends Controller
       $fileNameToStore = 'noimage.jpg';
     }
 
-    $user = InternalSlider::where('slider_position', '=', Input::get('slider_position'))->first();
-       if ($user === null)
-       {
+    //$user = InternalSlider::where('slider_position', '=', Input::get('slider_position'))->first();
+      // if ($user === null)
+       //{
          // Create Post
          $post = new InternalSlider;
          $post->slider_position = $request->input('slider_position');
@@ -70,19 +70,19 @@ class InternalSliderCtrl extends Controller
          $post->destination_slug = $request->input('destination_slug');
          $post->slider_image = $fileNameToStore;
          $post->save();
-         return back()->withInput()->with('success','Slider created successfully !');
-       }
+         return back()->with('success','Slider created successfully !');
+       /*}
        else{
-         DB::table('sliders')
+         DB::table('internal_sliders')
                ->where('slider_position','=', Input::get('slider_position'))
                ->update([
                  'slider_position' => $request->input('slider_position'),
                  'description' => $request->input('description'),
                  'slider_image' => $slider_image = $fileNameToStore,
                ]);
-               return back()->withInput()->with('success','Updated successfully !');
+               return back()->with('success','Updated successfully !');
 
-       }
+       }*/
     }
 
     /**

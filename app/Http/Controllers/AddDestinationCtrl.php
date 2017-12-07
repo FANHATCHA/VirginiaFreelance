@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use App\AddDestination;
+use App\InternalSlider;
 use Illuminate\Support\Facades\Input;
 class AddDestinationCtrl extends Controller
 {
@@ -106,11 +107,25 @@ class AddDestinationCtrl extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //$getDestinations = AddDestination::orderBy('created_at', 'desc')->paginate(10);
-        $getDestinations= AddDestination::find($id);
-        return view('dashboard.open', compact('getDestinations'));
+      //$getDestinations= AddDestination::find($slug);
+      $getDestinations = AddDestination::where('slug', $slug)->firstOrFail();
+
+    /*$getDestinations = AddDestination::where('id', $id)
+            ->orWhere('slug', $slug)
+            ->firstOrFail();*/
+
+
+        /***********Internal Slider ****************/
+
+        //$internalSliders  = DB::table('internal_sliders')->where('destination_slug', $slug)->get();
+        $internalSliders = InternalSlider::orderBy('created_at', 'desc')->where('destination_slug', $slug)->paginate(5);
+        return view('dashboard.open', compact(
+          'getDestinations',
+          'internalSliders'
+        ));
     }
 
 

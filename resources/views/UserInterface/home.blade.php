@@ -101,12 +101,12 @@
           </div>
         </div>
       </nav>
-  </br>
+
     <div class="wrapper">
 
       <div class="main">
             <div class="section">
-            </br>
+
             @include('inc.searchBar')
 
               <div class="container text-center">
@@ -240,7 +240,7 @@
                    @foreach ($hotdeals as $key => $hotdeal)
                   <div class="card" style="width: 15rem; margin-left:12px;">
 
-                    <a href="#{{$hotdeal->id}}"><img src="img/hotdeals_images/{{$hotdeal->hotdeals_image }}" alt="{{$hotdeal->hotDealTitle}}" class="img-fluid img-rounded" data-toggle="modal" data-target="#{{ $hotdeal->id }}"> </a></br></br>
+                    <a href="#{{$hotdeal->id}}"><img src="img/hotdeals_images/{{$hotdeal->hotdeals_image }}" alt="{{$hotdeal->hotDealTitle}}" class="img-fluid img-rounded" data-toggle="modal" data-target="#{{ $hotdeal->id }}"> </a>
                     <div class="card-block">
 
                         <h4 class="card-title" style="color:#f5593d;"><b>{{ $hotdeal->hotDealTitle }}</b></h4>

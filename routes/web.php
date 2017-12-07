@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
 /**Resource controllers**/
 Route::resource('sliders', 'SliderCtrl');
 Route::resource('hotdeals', 'HotDealsCtrl');
-Route::resource('destination', 'AddDestinationCtrl');
-Route::get('/destinations/{id}', 'AddDestinationCtrl@show')->name('destinations');
+Route::resource('destinations', 'AddDestinationCtrl');
+//Route::resource('/ai-destinations/{slug}', 'AddDestinationCtrl@show');
 Route::resource('internal-slider', 'InternalSliderCtrl');
 Route::resource('tailor-made-trip', 'TailorMadeTripCtrl');
 Route::resource('client-experience', 'UXCtrl');

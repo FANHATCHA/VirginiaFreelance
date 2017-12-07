@@ -21,8 +21,4 @@ class AddDestination extends Model
   // Timestamps
   public $timestamps = true;
 
-  public function internals()
-   {
-       return $this->hasMany('App\InternalSlider');
-   }
 }

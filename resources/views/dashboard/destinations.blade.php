@@ -369,7 +369,7 @@
 	                         </tr>
 	                         @foreach($destinations as $destination)
 														 <tr>
-                              <td><a href="/destinations/{{$destination->id}}">{{$destination->destinationName}}</a></td>
+                              <td><a href="/destinations/{{$destination->slug}}">{{$destination->destinationName}}</a></td>
 															<td>{{$destination->created_at->diffForHumans()}}</td>
 															<td>
 																<a href="/destinations/{{$destination->id}}/edit" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit</a></td>

@@ -67,7 +67,7 @@ class UserInterfaceController extends Controller
               ->Paginate(6);
               /****************************************************/
               $posts = AddDestination::where('slug', '=', $slug)->first();
-              /**Internal sliders display**/
+              /**********Internal sliders display****************/
               $sliderOne = DB::table('internal_sliders')
               ->where('destination_slug', '=',$slug)
               ->whereIn('slider_position', [1])
