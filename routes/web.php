@@ -24,7 +24,6 @@ Route::get('/ui-destination/{slug}', 'UserInterfaceController@destinations')->na
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
 /******  start menu items***********/
 Route::group(['middleware' => ['auth']], function () {
 
@@ -32,7 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
 Route::resource('sliders', 'SliderCtrl');
 Route::resource('hotdeals', 'HotDealsCtrl');
 Route::resource('destinations', 'AddDestinationCtrl');
-//Route::resource('/ai-destinations/{slug}', 'AddDestinationCtrl@show');
 Route::resource('internal-slider', 'InternalSliderCtrl');
 Route::resource('tailor-made-trip', 'TailorMadeTripCtrl');
 Route::resource('client-experience', 'UXCtrl');

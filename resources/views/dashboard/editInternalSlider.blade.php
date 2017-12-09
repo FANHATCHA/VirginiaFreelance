@@ -13,17 +13,17 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
-    <link href="../assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="../../assets/css/animate.min.css" rel="stylesheet"/>
 
     <!--  Paper Dashboard core CSS    -->
-    <link href="../assets/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="../../assets/css/paper-dashboard.css" rel="stylesheet"/>
     <!--  Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="../assets/css/themify-icons.css" rel="stylesheet">
+    <link href="../../assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -173,37 +173,67 @@
             </div>
         </nav>
 
+				        <div class="content">
+				            <div class="container-fluid">
 
-        <div class="content">
-            <div class="container-fluid">
+				                <div class="row">
 
-                <div class="row">
+				                    <div class="col-md-12">
+															@include('inc.messages')
+				                        <div class="card">
+				<div class="header">
+				    <h4 class="title">{{$editSliders->destination_slug}}</h4>
+				    <p class="category">Edit Internal Sliders</p>
+				</div>
 
-                    <div class="col-md-12">
-											@include('inc.messages')
-                        <div class="card">
-													<ul class="nav nav-tabs" id="myTab" role="tablist">
-	  <li class="nav-item">
-	    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Slider</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Tailor Made Trip</a>
-	  </li>
-	  <li class="nav-item">
-	    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Clients Experience</a>
-	  </li>
-	</ul>
+				  <div class="content">
+						{!! Form::open(['action' => ['InternalSliderCtrl@update', $editSliders->id], 'method' => 'POST', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
+ 					 {{ csrf_field() }}
+ 					 {{ method_field('PUT') }}
+				    <div class="row">
+				        <div class="col-md-5">
+				            <div class="form-group border-input">
+											<label>Upload image</label>
+											{{Form::file('slider_image')}}</br>
+											<img src="../../img/internalSlider_images/{{$editSliders->slider_image}}" width="100px"/></br>
+				            </div>
+				        </div>
+				    </div>
 
-	<div class="tab-content">
-	  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">@include('inc.openSlider', $internalSliders)</div>
-	  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">@include('inc.openTailorTrip')</div>
-	  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">@include('inc.openUX')</div>
-	</div>
-          </div>
-                </div>
+				    <div class="row">
+				        <div class="col-md-10">
+				            <div class="form-group border-input">
+											<label>Description</label>
+											{{Form::textarea('description', $editSliders->description, ['id' => 'slider-ckeditor','rows' => '5', 'class' => 'form-control border-input', 'placeholder' => 'Description'])}}
+				            </div>
+				        </div>
+				    </div>
+				     <div class="row">
+				    <div class="col-md-4">
+				    <div class="form-group">
+							<label> Edit Slider Position</label>
+								<select class="form-control border-input" name="slider_position" id="slider_position" required>
+								<option disabled="" selected=""></option>
+								<option value="1"> 1</option>
+								<option value="2"> 2</option>
+								<option value="3"> 3</option>
+								<option value="4"> 4</option>
+								</select>
+				</div>
+				   </div>
+				    </div>
+				      <div class="text-center">
+                  {{ Form::hidden('username', auth()->user()->name) }}
+				          {{Form::submit('Submit', ['class'=>'btn btn-info btn-fill btn-wd'])}}
+				           {!! Form::close() !!}
+				</div>
+				</div>
 
-            </div>
-        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -235,76 +265,20 @@
 
     </div>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">{{$getDestinations->destinationName}} | create</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      {!! Form::open(['action' => 'InternalSliderCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-      {{ csrf_field() }}
-       <div class="row">
-      <div class="col-md-12">
-      <div class="form-group">
-      <label>Slider Position</label>
-        <select class="form-control border-input" name="slider_position" id="slider_position" required>
-        <option disabled="" selected=""></option>
-        <option value="1"> 1</option>
-        <option value="2"> 2</option>
-        <option value="3"> 3</option>
-        <option value="4"> 4</option>
-        </select>
-      </div>
-     </div>
-      </div>
-      <div class="row">
-          <div class="col-md-5">
-              <div class="form-group border-input">
-                  <label>Upload image</label>
-                  {{Form::file('slider_image')}}
-
-              </div>
-          </div>
-      </div>
-        <div class="row">
-            <div class="col-md-10">
-                <div class="form-group border-input">
-                    <label>Description</label>
-                    {{Form::textarea('description', '', ['id' => 'slider-ckeditor','rows' => '5', 'class' => 'form-control border-input', 'placeholder' => 'Description'])}}
-                </div>
-            </div>
-        </div>
-        <div class="text-center">
-            {{ Form::hidden('destination_slug', $getDestinations->slug) }}
-            {{Form::submit('Submit', ['class'=>'btn btn-info btn-fill btn-wd'])}}
-             {!! Form::close() !!}
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 </body>
 
     <!--   Core JS Files   -->
-    <script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="../assets/js/bootstrap-checkbox-radio.js"></script>
+	<script src="../../assets/js/bootstrap-checkbox-radio.js"></script>
 
 	<!--  Charts Plugin -->
-	<script src="../assets/js/chartist.min.js"></script>
+	<script src="../../assets/js/chartist.min.js"></script>
 
-    <!--  Notifications Plugin    -->+
-    <script src="../assets/js/bootstrap-notify.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../../assets/js/bootstrap-notify.js"></script>
 		<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 	<script>
 			CKEDITOR.replace( 'tailorTrip-ckeditor' );

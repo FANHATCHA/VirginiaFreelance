@@ -122,8 +122,7 @@
                     <div class="tim-title">
                       <h3> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Trending destinations of the week</h3>
                       <span class="label label-default">Cuba</span>
-                      <button type="button" class="btn label btn-danger btn-round" a data-container="body" data-toggle="popover" data-placement="top" data-title="Popover on top"
-                      data-content="Here will be some very useful information about this popove <img src='/img/slider_images/'> ">on top</button>
+
                            <span class="label label-primary" ata-container="body" data-toggle="popover" data-placement="top" data-title="Popover on top" data-content="Here will be some very useful information about this popover.">
                              Costa
                            </span>
@@ -286,7 +285,7 @@
                                               <div class="modal-dialog" role="document">
                                                   <div class="modal-content">
                                                       <div class="modal-header">
-                                                          <h5 class="modal-title text-center" id="exampleModalLabel">Unsual travel</h5>
+                                                          <h5 class="modal-title text-center" id="exampleModalLabel">{{$hotdeal->hotDealTitle}}</h5>
                                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                               <span aria-hidden="true">&times;</span>
                                                           </button>

@@ -109,17 +109,8 @@ class AddDestinationCtrl extends Controller
      */
     public function show($slug)
     {
-        //$getDestinations = AddDestination::orderBy('created_at', 'desc')->paginate(10);
-      //$getDestinations= AddDestination::find($slug);
       $getDestinations = AddDestination::where('slug', $slug)->firstOrFail();
-
-    /*$getDestinations = AddDestination::where('id', $id)
-            ->orWhere('slug', $slug)
-            ->firstOrFail();*/
-
-
         /***********Internal Slider ****************/
-
         //$internalSliders  = DB::table('internal_sliders')->where('destination_slug', $slug)->get();
         $internalSliders = InternalSlider::orderBy('created_at', 'desc')->where('destination_slug', $slug)->paginate(5);
         return view('dashboard.open', compact(
@@ -137,7 +128,8 @@ class AddDestinationCtrl extends Controller
      */
     public function edit($id)
     {
-        //
+      $editSliders = InternalSlider::find($id);
+      return view('dashboard.editInternalSlider', compact('editSliders'));
     }
 
     /**

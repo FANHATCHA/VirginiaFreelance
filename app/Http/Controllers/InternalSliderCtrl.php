@@ -10,6 +10,10 @@ use App\InternalSlider;
 
 class InternalSliderCtrl extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -116,7 +120,38 @@ class InternalSliderCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+      'slider_position' => 'required',
+      'description' => 'required',
+      'slider_image' => 'image|nullable|max:1999'
+    ]);
+
+// Handle File Upload
+    if($request->hasFile('slider_image')){
+      // Get filename with the extension
+      $filenameWithExt = $request->file('slider_image')->getClientOriginalName();
+      // Get just filename
+      $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+      // Get just ext
+      $extension = $request->file('slider_image')->getClientOriginalExtension();
+      // Filename to store
+      $fileNameToStore= $filename.'_'.time().'.'.$extension;
+      // Upload Image
+      $path = $request->file('slider_image')->move('img/internalSlider_images/', $fileNameToStore);
+    } else {
+      $fileNameToStore = 'noimage.jpg';
+    }
+
+         // Update post
+         //$post = new InternalSlider;
+         $post = InternalSlider::find($id);
+         $post->slider_position = $request->input('slider_position');
+         $post->description = $request->input('description');
+         //$post->destination_slug = $request->input('destination_slug');
+         $post->slider_image = $fileNameToStore;
+         $post->save();
+         return back()->with('success','Slider updated successfully !');
+
     }
 
     /**
@@ -127,6 +162,9 @@ class InternalSliderCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+     $validateForm = InternalSlider::find($id);
+     $validateForm->delete();
+     return back()->with('success','Slider deleted successfully !');
+
     }
 }

@@ -9,6 +9,10 @@
                                           </button>
                                       </div>
                                       <div class="modal-body">
+                                        <div class="text-center">
+                                          <img src="../img/local_agents/{{ $posts->localAgentImg }}" class="img-circle img-no-padding img-responsive" alt="{{ $posts->destinationName }}">
+                                        </div>
+
                                         {!! $posts->description !!}
                                       </div>
                                       <div class="modal-footer">
@@ -17,7 +21,7 @@
                                           </div>
                                           <div class="divider"></div>
                                           <div class="right-side">
-                                              <button type="button" class="btn btn-success btn-link">Delete</button>
+                                              <button type="button" class="btn btn-success btn-link">Explore more</button>
                                           </div>
                                       </div>
                                   </div>
