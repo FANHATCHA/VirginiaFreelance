@@ -17,7 +17,7 @@ Route::get('/', 'UserInterfaceController@home')->name('UI');
 /**** Start User Interface ****/
 
 /**** Start User destinations ****/
-Route::get('/ui-destination/{slug}', 'UserInterfaceController@destinations')->name('ui-destination')->where('slug', '[\w\d\-\_]+');
+Route::get('/{slug}', 'UserInterfaceController@destinations')->name('ui-destination')->where('slug', '[\w\d\-\_]+');
 
 /**** Start User destinations ****/
 

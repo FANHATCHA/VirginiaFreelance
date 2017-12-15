@@ -28,6 +28,8 @@ class UserInterfaceController extends Controller
       /**destinations display**/
       $destinations = AddDestination::all();
 
+      /**Render all the destinations**/
+      $allDestinations = AddDestination::orderBy('created_at', 'desc')->Paginate(10);
       /**********Social Media *************/
       $facebook = DB::table('social_media')->where('socialMedia', 'facebook')->first();
       $twitter = DB::table('social_media')->where('socialMedia', 'twitter')->first();
@@ -45,7 +47,8 @@ class UserInterfaceController extends Controller
         'facebook',
         'twitter',
         'Instagram',
-        'googlePlus'
+        'googlePlus',
+        'allDestinations'
 
       ));
 
