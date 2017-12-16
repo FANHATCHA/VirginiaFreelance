@@ -26,7 +26,7 @@ class UserInterfaceController extends Controller
       /**Hot deals display**/
       $hotdeals = HotDeals::orderBy('created_at', 'desc')->Paginate(6);
       /**destinations display**/
-      $destinations = AddDestination::all();
+      $destinations = AddDestination::all()->sortBy("destinationName");
 
       /**Render all the destinations**/
       $allDestinations = AddDestination::orderBy('created_at', 'desc')->Paginate(10);

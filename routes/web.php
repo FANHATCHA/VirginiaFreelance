@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/**** Start User Interface ****/
+Route::get('/login', 'UserInterfaceController@home')->name('login');
+Route::get('/home', 'UserInterfaceController@home')->name('home');
+Route::get('/index', 'UserInterfaceController@home')->name('index');
+
 Route::get('/test', 'UserInterfaceController@test')->name('test');
 
 /**** Start User Interface ****/
@@ -40,14 +45,14 @@ Route::resource('social-media', 'socialMediaCtrl');
 /** Exception route to middleware**/
 //Route::get('/destination/{slug}', 'UserInterfaceController@destinations')->name('destinations');
 /**********************************************************/
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/system-administrators/home', 'HomeController@index')->name('system-administrators/home');
 Route::get('/icons', 'HomeController@icons')->name('icons');
-Route::get('/ui-homepage', 'HomeController@uiHomepage')->name('ui-homepage');
-Route::get('/destinations', 'HomeController@destinations')->name('destinations');
+Route::get('system-administrators/ui-homepage', 'HomeController@uiHomepage')->name('system-administrators/ui-homepage');
+Route::get('/system-administrators/destinations', 'HomeController@destinations')->name('system-administrators/destinations');
 
 });
 /****** start menu items***********/
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'system-administrators/admin'], function () {
     Voyager::routes();
 });
