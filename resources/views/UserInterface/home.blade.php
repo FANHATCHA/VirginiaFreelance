@@ -61,11 +61,12 @@
 					<li class="type-1" style="font-size:16px;"><i class="fa fa-phone" aria-hidden="true" style="color:black;"></i><a href="#"><b style="color:#ff6600;"> +33 (0) 184 214 212</b><span class="fa fa-angle-down"></span></a>
 
 					</li>
+
 					<li class="type-1" style="font-size:16px;">
 						<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
- <i class="fa fa-plane" aria-hidden="true" style="color:white;"></i> ASK FOR A QUOTE
-</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					 <i class="fa fa-plane" aria-hidden="true" style="color:white;"></i> ASK FOR A QUOTE
+					</button>
 
 
 
@@ -78,7 +79,7 @@
    </div>
   </header>
 
-
+</br></br>
      <div class="clip">
 		<div class="bg bg-bg-chrome" style="background:rgb(250,250,250)">
 		</div>
@@ -91,8 +92,11 @@
 	 				<div class="second-title">
 	 					<h4 class="subtitle color-dark-2-light">Create Your Tailor-Made Trip</h4>
 						<h2>With a local Expert</h2>
-	 					<p class="color-grey">
-	 						 @include('inc.searchBar')
+							<h2>@include('inc.megaMenu', $destinations)</h2></br>
+	 					<p>
+							<button type="button" class="btn btn-warning pull-left" data-toggle="modal" data-target="#myModal" style="position:fixed; z-index: 10;left: 20px;border: 1px solid #ff6600; background: #ff6600">
+							 <i class="fa fa-plane" aria-hidden="true" style="color:white;"></i> ASK FOR A QUOTE
+							</button>
 	 					</p>
 	 				</div>
 	 			</div>
@@ -105,7 +109,7 @@
 	 					<div class="tour-layer delay-1"></div>
 	 					<div class="vertical-align">
 	 						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-	 						<h4 class="color-white"><b>tours in monaco</b></h4>
+	 						<h4 class="color-white"><b>Madagacar</b></h4>
 	 					</div>
 	 				</a>
 	 			</div>
@@ -115,7 +119,7 @@
 	 					<div class="tour-layer delay-1"></div>
 	 					<div class="vertical-align">
 	 						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-	 						<h4 class="color-white"><b>tours in monaco</b></h4>
+	 						<h4 class="color-white"><b>Mauritius</b></h4>
 	 					</div>
 	 				</a>
 	 			</div>
@@ -189,23 +193,15 @@
 	 					</div>
 	 				</a>
 	 			</div>
-	 		</div>
+	 		</div></br>
+			<center>
+				 <h5>  <img src="img/HotDeals.gif" alt="Hot Deals" width="200px"/> </h5>
+			</center>
 	 	</div>
 	 </div>
-
-
  <div class="main-wraper padd-90">
 	 <div class="container">
-		 <div class="row">
 
-				 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
- 	 				<div class="second-title">
- 	 					<h4 class="subtitle color-dark-2-light">Tailor Made Trips</h4>
- 	 					<h2>Hot Deals</h2>
- 	 					<p class="color-grey">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla. Suspendisse id tor.</p>
- 	 				</div>
- 	 			</div>
-			 </div>
 		 <div class="row isotope-container">
 			 <div class="grid-sizer col-xs-12 col-sm-3"></div>
 				 <div class="item col-xs-12 col-md-6">
@@ -261,21 +257,20 @@
 					 </div>
 					 </div>
 				 </div>
+
 		 </div>
+	 </br>
+		 <center>
+ 			<h2>Clients Feedback</h2>
+ 				<p class="color-grey">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.</p>
+ 		</center>
 	 </div>
+
  </div>
 
 
  <div class="main-wraper padd-90">
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="second-title">
-				<h2>Clients Feedback</h2>
-					<p class="color-grey">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla.</p>
-			</div>
-		</div>
-	</div>
 	<div class="row">
 		<div class="top-baner arrows">
 	<div class="swiper-container offers-slider" data-autoplay="5000" data-loop="1" data-speed="500" data-slides-per-view="responsive" data-mob-slides="1" data-xs-slides="2" data-sm-slides="2" data-md-slides="3" data-lg-slides="3" data-add-slides="3">
@@ -373,115 +368,7 @@
 	</div>
 </div>
 </div>
-<!-- GAL-ITEM-->
-<div class="main-wraper">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-				<div class="second-title">
-					<h4 class="subtitle color-dark-2-light">our gallery</h4>
-					<h2>why we are the best</h2>
-					<p class="color-grey">Curabitur nunc erat, consequat in erat ut, congue bibendum nulla. Suspendisse id tor.</p>
-				</div>
-			</div>
-		</div>
-		<div class="isotope-container row row10">
-			<div class="grid-sizer col-mob-12 col-xs-6 col-sm-3"></div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-6">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_1.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_2.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_3.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_4.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_5.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-6">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_6.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-6">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_7.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_8.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-			<div class="item gal-item col10 col-mob-12 col-xs-6 col-sm-3">
-				<a class="black-hover" href="detail.html">
-					<img class="img-full img-responsive" src="ui/img/home_7/gal_9.jpg" alt="">
-					<div class="tour-layer delay-1"></div>
-					<div class="vertical-align">
-						<div class="date color-white">July <strong>19th</strong> to July <strong>26th</strong></div>
-						<h4 class="color-white"><b>tours in monaco</b></h4>
-					</div>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
 
-</br>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -617,6 +504,17 @@
 $('#myModal').on('shown.bs.modal', function () {
 $('#myInput').focus()
 })
+</script>
+<script type="text/javascript">
+
+$(function () {
+$('.toggle-menu').click(function(){
+$('.exo-menu').toggleClass('display');
+
+});
+
+});
+
 </script>
 </body>
 </html>
