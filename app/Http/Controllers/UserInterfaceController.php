@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Slider;
 use App\HotDeals;
 use App\AddDestination;
-use App\TailorMadeTrip;
-use App\ClientExp;
-use App\SocialMedia;
+use App\Rent;
+use App\ForSale;
+use App\AddPhoto;
+
 use DB;
 
 class UserInterfaceController extends Controller
@@ -17,102 +18,101 @@ class UserInterfaceController extends Controller
   //User Interface Home
     public function home()
     {
-      /**sliders display**/
-      $sliderOne = DB::table('sliders')->where('slider_position', 1)->get();
-      $sliderTwo = DB::table('sliders')->where('slider_position', 2)->get();
-      $sliderThree = DB::table('sliders')->where('slider_position',3)->get();
-      $sliderFour = DB::table('sliders')->where('slider_position',4)->get();
-
       /**Hot deals display**/
-      $hotdeals = HotDeals::orderBy('created_at', 'desc')->Paginate(6);
-      /**destinations display**/
-      $destinations = AddDestination::all()->sortBy("destinationName");
+      $hotdeals = Rent::orderBy('created_at', 'desc')->Paginate(20);
 
-      /**Render all the destinations**/
-      $allDestinations = AddDestination::orderBy('created_at', 'desc')->Paginate(10);
-      /**********Social Media *************/
-      $facebook = DB::table('social_media')->where('socialMedia', 'facebook')->first();
-      $twitter = DB::table('social_media')->where('socialMedia', 'twitter')->first();
-      $Instagram = DB::table('social_media')->where('socialMedia', 'Instagram')->first();
-      $googlePlus = DB::table('social_media')->where('socialMedia', 'Google+')->first();
+      $images = DB::table('add_photos')
+     ->orderBy('created_at', 'desc')
+     ->get();
 
-      return view('UserInterface.home', compact(
-        'sliders',
-        'sliderOne',
-        'sliderTwo',
-        'sliderThree',
-        'sliderFour',
+      return view('UserInterface.index', compact(
         'hotdeals',
-        'destinations',
-        'facebook',
-        'twitter',
-        'Instagram',
-        'googlePlus',
-        'allDestinations'
-
+        'images'
       ));
 
 
     }
 
-
-          //User Interface destinations via slugs
-            public function destinations($slug)
+            //User Interface destinations via slugs
+            public function UXHotDeals($slug)
             {
-              /***************Tailor made trips***************/
-              $tailorTrips = TailorMadeTrip::orderBy('created_at', 'desc')
-              ->where('destination_slug', '=',$slug)
-              ->Paginate(6);
 
-              /****************Client Experience**************/
-              $clientExps = ClientExp::orderBy('created_at', 'desc')
-              ->where('destination_slug', '=',$slug)
-              ->Paginate(6);
-              /****************************************************/
-              $posts = AddDestination::where('slug', '=', $slug)->first();
-              /**********Internal sliders display****************/
-              $sliderOne = DB::table('internal_sliders')
-              ->where('destination_slug', '=',$slug)
-              ->whereIn('slider_position', [1])
-              ->get();
-              $sliderTwo = DB::table('internal_sliders')
-              ->where('destination_slug', '=',$slug)
-              ->whereIn('slider_position', [2])
-              ->get();
-              $sliderThree = DB::table('internal_sliders')
-              ->where('destination_slug', '=',$slug)
-              ->whereIn('slider_position', [3])
-              ->get();
-              $sliderFour = DB::table('internal_sliders')
-              ->where('destination_slug', '=', $slug)
-              ->whereIn('slider_position', [4])
-              ->get();
-              /**********Social Media *************/
-              $facebook = DB::table('social_media')->where('socialMedia', 'facebook')->first();
-              $twitter = DB::table('social_media')->where('socialMedia', 'twitter')->first();
-              $Instagram = DB::table('social_media')->where('socialMedia', 'Instagram')->first();
-              $googlePlus = DB::table('social_media')->where('socialMedia', 'Google+')->first();
+                        $deals = DB::table('rents')
+                       ->where('slug', '=',$slug)
+                       ->first();
+                       $images = DB::table('add_photos')
+                      ->where('photo_slug', '=',$slug)
+                      ->orderBy('created_at', 'desc')
+                      ->get();
+                      return view('UserInterface.rentDetails', compact(
+                          'deals',
+                          'images'
+                      ));
 
-              return view('UserInterface.index', compact(
-                'posts',
-                'sliderOne',
-                'sliderTwo',
-                'sliderThree',
-                'sliderFour',
-                'tailorTrips',
-                'clientExps',
-                'facebook',
-                'twitter',
-                'Instagram',
-                'googlePlus'
-            ));
 
             }
 
-      public function test()
+      public function rentLongTerm($slugLink)
       {
-        return view('dashboard.table');
+       $longTerms = Rent::orderBy('created_at', 'desc')
+       ->where('whatIsItFor', '=',$slugLink)
+       ->Paginate(6);
+        return view('UserInterface.rent-long-term', compact(
+        'longTerms',
+        'images'
+        ));
+      }
 
+            public function itemSale($slugLink)
+            {
+             $longTerms  = Rent::orderBy('created_at', 'desc')
+             ->where('whatIsItFor', '=',$slugLink)
+             ->Paginate(6);
+              return view('UserInterface.for-sale', compact(
+              'longTerms',
+              'images'
+              ));
+            }
+
+      public function openRent ($slugLink,$slug)
+      {
+
+        $deals = DB::table('rents')
+       ->where('slug', '=',$slug)
+       ->first();
+       $images = DB::table('add_photos')
+      ->where('photo_slug', '=',$slug)
+      ->orderBy('created_at', 'desc')
+      ->get();
+      return view('UserInterface.rentDetails', compact(
+          'deals',
+          'images'
+      ));
+
+      }
+
+      public function forSale($slugLink,$slug)
+      {
+        $deals = DB::table('rents')
+       ->where('slug', '=',$slug)
+       ->first();
+       $images = DB::table('add_photos')
+      ->where('photo_slug', '=',$slug)
+      ->orderBy('created_at', 'desc')
+      ->get();
+      return view('UserInterface.rentDetails', compact(
+          'deals',
+          'images'
+      ));
+      }
+
+      public function pds()
+      {
+        return View('UserInterface.pds');
+      }
+      public function contact()
+      {
+        return View('UserInterface.contact');
       }
 
 }

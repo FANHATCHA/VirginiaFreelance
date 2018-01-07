@@ -15,17 +15,17 @@ Route::get('/login', 'UserInterfaceController@home')->name('login');
 Route::get('/home', 'UserInterfaceController@home')->name('home');
 Route::get('/index', 'UserInterfaceController@home')->name('index');
 
-Route::get('/test', 'UserInterfaceController@test')->name('test');
-
 /**** Start User Interface ****/
 Route::get('/', 'UserInterfaceController@home')->name('UI');
 /**** Start User Interface ****/
-
-/**** Start User destinations ****/
-Route::get('/{slug}', 'UserInterfaceController@destinations')->name('ui-destination')->where('slug', '[\w\d\-\_]+');
-
-/**** Start User destinations ****/
-
+Route::get('hot-deals/{slug}', 'UserInterfaceController@UXHotDeals')->name('ux-hot-deals')->where('slug', '[\w\d\-\_]+');
+Route::get('rent/{slugLink}', 'UserInterfaceController@rentLongTerm')->name('rent-long-term')->where('slug', '[\w\d\-\_]+');
+Route::get('rent/{slugLink}/{slug}', 'UserInterfaceController@openRent')->name('rent-long-term')->where('slug', '[\w\d\-\_]+');
+Route::get('for-sale/{slugLink}', 'UserInterfaceController@itemSale')->name('item-sale')->where('slug', '[\w\d\-\_]+');
+Route::get('for-sale/{slugLink}/{slug}', 'UserInterfaceController@forSale')->name('toSale')->where('slug', '[\w\d\-\_]+');
+Route::get('/pds', 'UserInterfaceController@pds')->name('pds');
+Route::get('/contact', 'UserInterfaceController@contact')->name('contact');
+Route::post('/save-message', 'SaveMsgCtrl@store')->name('save-message');
 
 Auth::routes();
 
@@ -35,21 +35,14 @@ Route::group(['middleware' => ['auth']], function () {
 /**Resource controllers**/
 Route::resource('sliders', 'SliderCtrl');
 Route::resource('hotdeals', 'HotDealsCtrl');
-Route::resource('destinations', 'AddDestinationCtrl');
-Route::resource('internal-slider', 'InternalSliderCtrl');
-Route::resource('tailor-made-trip', 'TailorMadeTripCtrl');
-Route::resource('client-experience', 'UXCtrl');
-Route::resource('social-media', 'socialMediaCtrl');
-//*******************//
+Route::resource('admin-rent', 'RentCtrl');
+Route::resource('for-sale', 'ForSaleCtrl');
+Route::resource('admin-contact', 'ContactCtrl');
+Route::resource('add-photo', 'AddPhotoCtrl');
 
-/** Exception route to middleware**/
-//Route::get('/destination/{slug}', 'UserInterfaceController@destinations')->name('destinations');
-/**********************************************************/
 Route::get('/system-administrators/home', 'HomeController@index')->name('system-administrators/home');
-Route::get('/icons', 'HomeController@icons')->name('icons');
-Route::get('system-administrators/ui-homepage', 'HomeController@uiHomepage')->name('system-administrators/ui-homepage');
-Route::get('/system-administrators/destinations', 'HomeController@destinations')->name('system-administrators/destinations');
-
+Route::get('/system-administrators/rent', 'HomeController@rent')->name('system-administrators/rent');
+Route::get('/system-administrators/for-sale', 'HomeController@forSale')->name('system-administrators/for-sale');
 });
 /****** start menu items***********/
 

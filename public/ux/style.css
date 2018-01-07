@@ -35,6 +35,11 @@
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,400italic);
+body {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  font-weight: bold;
+}
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* 02 - RESET STYLES */
@@ -276,7 +281,7 @@ b, strong { font-weight: 700; }
 
 .color-white-light { color: rgba(255, 255, 255, 0.6); }
 
-.color-green { color: #66bb6a; }
+.color-green { color: #ff6600; }
 
 .color-dark-green { color: #002222; }
 
@@ -381,7 +386,7 @@ b, strong { font-weight: 700; }
 
 .input-style-1 img { position: absolute; left: 25px; top: 50%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%); }
 
-.input-style-1 input { width: 100%; border: 1px solid rgba(255, 255, 255, 0.5); -moz-border-radius: 25px; border-radius: 25px; background: none; height: 60px; padding: 0px 20px 0px 50px; color: #fff; }
+.input-style-1 input { width: 200%; border: 1px solid black; -moz-border-radius: 25px; border-radius: 25px; background: none; height: 60px; padding: 0px 20px 0px 50px; color: black; }
 
 .submit input { padding: 21px 20px; letter-spacing: 1px; }
 
@@ -395,7 +400,7 @@ b, strong { font-weight: 700; }
 
 .input-style-1.color-2 input:-ms-input-placeholder { color: rgba(34, 34, 34, 0.6); opacity: 1; }
 
-.input-style-1.color-3 input { border-color: #f8f8f8; background: #f8f8f8; color: #b9b9b9; opacity: 1; }
+.input-style-1.color-3 input { border-color: #f8f8f8; background: white; color: black; opacity: 1; }
 
 .input-style-1.color-3 input::-webkit-input-placeholder { color: #b9b9b9; opacity: 1; }
 
@@ -435,7 +440,7 @@ b, strong { font-weight: 700; }
 
 .input-style-1.color-6 input:-ms-input-placeholder { color: rgba(255, 255, 255, 0.6); opacity: 1; }
 
-.input-style-1.b-50 input { font-size: 14px; height: 50px; padding: 0px 20px 0px 44px; }
+.input-style-1.b-50 input { font-size: 20px; height: 50px; padding: 0px 20px 0px 44px; }
 
 .input-style-1.b-50 img { left: 22px; }
 
@@ -742,7 +747,7 @@ a:focus, a:hover {color: inherit;}
 
 .offers-arrow.color-3:hover { background: #022c54; border-color: #022c54; }
 
-.offers-arrow.color-3 { background: #66bb6a; }
+.offers-arrow.color-3 { background: #ff6600; }
 
 .offers-arrow.color-3:hover { background: #66bb6a; border-color: #66bb6a; }
 
@@ -1173,7 +1178,7 @@ a:focus, a:hover {color: inherit;}
 
 .main-wraper.color-2 .second-title h2 { color: #fff; }
 
-.second-title { position: relative; text-align: center; padding-top: 110px; padding-bottom: 65px; }
+.second-title { position: relative; text-align: center; padding-top: 30px; padding-bottom: 65px; }
 
 .second-title h2 { padding-bottom: 24px; letter-spacing: 6px; }
 
@@ -2174,7 +2179,7 @@ a:focus, a:hover {color: inherit;}
 
 .simple-tab.color-1 .nav-tab-item.active { background: #f8f8f8; }
 
-.simple-tab.color-1 .tab-info { background: #f8f8f8; }
+.simple-tab.color-1 .tab-info { background: white; }
 
 .simple-tab.tab-3 .nav-tab-item { display: block; float: left; width: 33.33333333%; padding: 0px 5px; }
 
@@ -3063,7 +3068,7 @@ ns-serif; font-size: 14px; line-height: 18px; font-weight: 700; margin-bottom: 3
 
 .change-grid.color-2.active, .change-list.color-2.active, .change-grid.color-2:hover, .change-list.color-2:hover { background: #2d3e50; color: #fff; cursor: pointer; }
 
-.change-grid.color-3, .change-list.color-3 { background: #fff; color: #022c54; cursor: pointer; }
+.change-grid.color-3, .change-list.color-3 { background: #fff; color: #ff6600; cursor: pointer; }
 
 .change-grid.color-3.active, .change-list.color-3.active, .change-grid.color-3:hover, .change-list.color-3:hover { background: #022c54; color: #fff; cursor: pointer; }
 

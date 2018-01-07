@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class HotDeals extends Model
 {
   protected $fillable = [
-   'username',
    'hotdeals_image',
+   'reference',
+   'slug',
    'hotDealTitle',
+   'hotDealLocation',
+   'whatIsItFor',
+   'price',
+   'details',
    'description',
-   'numberofStars',
-   'price'
  ];
   // Table Name
   protected $table = 'hot_deals';

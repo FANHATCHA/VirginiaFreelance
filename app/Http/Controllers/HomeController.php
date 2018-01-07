@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Slider;
-use App\HotDeals;
-use App\AddDestination;
+use App\Contact;
+use App\Rent;
+//use App\AddDestination;
+//use App\AddDestination;
 use DB;
 
 class HomeController extends Controller
@@ -27,44 +28,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard');
+      $messages = Contact::orderBy('created_at', 'desc')->where('status', 0)->paginate(10);
+      $TakeOnes = Contact::orderBy('created_at', 'desc')->where('status', 1)->paginate(10);
+      $getStatus = DB::table('contacts')->where('status', 0)->get();
+      $getOne = DB::table('contacts')->where('status',1)->get();
+      return view('dashboard.dashboard', compact('messages', 'TakeOnes','getOne','getStatus'));
     }
 
-    public function icons()
+    public function rent()
     {
-        return view('dashboard.icons');
+       $rents = Rent::orderBy('created_at', 'desc')->paginate(10);
+        return view('dashboard.rent', compact('rents'));
     }
-
-    public function uiHomepage()
+    public function forSale()
     {
-      /**Slider display**/
-       $sliders = Slider::orderBy('created_at', 'desc')->whereBetween('slider_position', [1, 4])->paginate(3);
-       $sliderOne = DB::table('sliders')->where('slider_position', 1)->get();
-       $sliderTwo = DB::table('sliders')->where('slider_position', 2)->first();
-       $sliderThree = DB::table('sliders')->where('slider_position',3)->first();
-       $sliderFour = DB::table('sliders')->where('slider_position',4)->first();
-
-       /**Hot deals display**/
-       $hotdeals = HotDeals::orderBy('created_at', 'desc')->paginate(3);
-
-       return view('dashboard.UI-Homepage', compact(
-         'sliders',
-         'sliderOne',
-         'sliderTwo',
-         'sliderThree',
-         'sliderFour',
-         'hotdeals'
-       ));
-   }
-
-   public function destinations()
-   {
-
-   /**destinations display**/
-   $destinations = AddDestination::orderBy('created_at', 'desc')->paginate(5);
-   return view('dashboard.destinations', compact(
-     'destinations'
-   ));
-   }
+        return view('dashboard.for-sale');
+    }
 
 }

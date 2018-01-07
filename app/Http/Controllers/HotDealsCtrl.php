@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-//use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
 use DB;
 use App\HotDeals;
 
@@ -27,7 +27,7 @@ class HotDealsCtrl extends Controller
      */
     public function create()
     {
-      //
+        //
     }
 
     /**
@@ -38,14 +38,20 @@ class HotDealsCtrl extends Controller
      */
     public function store(Request $request)
     {
+      $randGenerator = rand(1, 1000);
+      $referenceOps = 'VFPA'.''.$randGenerator;
       $this->validate($request, [
       'hotdeals_image' => 'image|nullable|max:1999',
       'hotDealTitle' => 'required',
+      'hotDealLocation' => 'required',
+      'whatIsItFor' => 'required',
+      'price' => 'required',
+      'details' => 'required',
       'description' => 'required',
-      'numberofStars' => 'required|integer',
-      'price' => 'required|',
     ]);
-
+   $slugTitle = $request->input('hotDealTitle');
+   $endSlug = str_slug($slugTitle , '-');
+   $slug = $endSlug.'-'.$referenceOps;
 // Handle File Upload
     if($request->hasFile('hotdeals_image')){
       // Get filename with the extension
@@ -62,14 +68,18 @@ class HotDealsCtrl extends Controller
     } else {
       $fileNameToStore = 'noimage.jpg';
     }
+
     // Create   hot deal
     $post = new HotDeals;
     $post->hotdeals_image = $fileNameToStore;
+    $post->reference = $referenceOps;
+    $post->slug = $slug;
     $post->hotDealTitle = $request->input('hotDealTitle');
-    $post->description = $request->input('description');
-    $post->numberofStars = $request->input('numberofStars');
+    $post->hotDealLocation = $request->input('hotDealLocation');
+    $post->whatIsItFor = $request->input('whatIsItFor');
     $post->price = $request->input('price');
-    $post->username = auth()->user()->name;
+    $post->details = $request->input('details');
+    $post->description = $request->input('description');
     $post->save();
     return back()->with('success','Hot deal added successfully !');
     }

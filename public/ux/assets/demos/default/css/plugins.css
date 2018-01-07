@@ -38,7 +38,8 @@ label {
   border-radius: 20px; }
 
 .form-control {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
   box-shadow: none;
   outline: none;
   font-weight: 300;
@@ -4890,8 +4891,8 @@ label.control-label {
   border-top: 1px solid #eeeeee; }
 
 .modal-title {
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: bold;
+  font-size: 30px;
   color: #3f444a; }
 
 .table > tfooter > tr > td,
@@ -5414,7 +5415,7 @@ label.control-label {
 .fancybox-margin {
   margin: 0; }
 
-/*** 
+/***
 Fontawesome Demo
 ***/
 .fontawesome-icon-list {
@@ -5464,7 +5465,7 @@ Simple Line Icons Demo
   .simplelineicons-demo .item-box {
     width: 24.333%; } }
 
-/*** 
+/***
 Glyphicons Demo
 ***/
 .glyphicons-demo ul {
