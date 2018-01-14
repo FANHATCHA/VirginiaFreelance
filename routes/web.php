@@ -39,10 +39,12 @@ Route::resource('admin-rent', 'RentCtrl');
 Route::resource('for-sale', 'ForSaleCtrl');
 Route::resource('admin-contact', 'ContactCtrl');
 Route::resource('add-photo', 'AddPhotoCtrl');
+Route::resource('slide-show', 'SlideShowCtrl');
 
 Route::get('/system-administrators/home', 'HomeController@index')->name('system-administrators/home');
 Route::get('/system-administrators/rent', 'HomeController@rent')->name('system-administrators/rent');
 Route::get('/system-administrators/for-sale', 'HomeController@forSale')->name('system-administrators/for-sale');
+Route::get('/system-administrators/slide-show', 'HomeController@slideShow')->name('system-administrators/slide-show');
 });
 /****** start menu items***********/
 

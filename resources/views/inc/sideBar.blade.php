@@ -7,6 +7,7 @@
 
   <h6 class="sidebar-title color-dark-2" style="font-size:10px;">Virginia Freelance Property Agent </br><i style="font-size:10px; color:green;">(E) virgeckard@hotmail.com</i>
     <a href="https://www.facebook.com/Virginia-Freelance-Property-Agent-567082836786068/" target="_blank"> <img src="{{ asset('ux/facebook_logos_PNG19748.png') }}" alt="Virginia Freelance Property Agent Facebook" width="25px;"> </a>
+      <a href="tel:+23059461982" > <img src="{{ asset('ux/1.png') }}" alt="Virginia Freelance Property Agent Whatsaap" width="25px;"> +23059461982 </a>
    </h6>
    @include('inc.messages')
    {!! Form::open(['action' => 'SaveMsgCtrl@store', 'method' => 'POST','onsubmit'=> 'ShowLoading()']) !!}

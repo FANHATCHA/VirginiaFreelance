@@ -4,6 +4,8 @@
     <title>Viginia Freelance Property Agency</title>
 		<meta charset="utf-8">
 		<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="keywords" content="Renting, Selling of Properties, Land, Apartments, Villas,  Houses, Plots, Apartments, Villas, Houses,  Land for Rent, Sale - SHORT & LONG TERM, Real Estate Agency, Agence immobiliere, ile maurice, mauritius, buy, achat, vente, for sale, rent, location, terrain, land, property agency, villa, annonce immobiliere, real estate ads" />
+     <meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		<meta name="format-detection" content="telephone=no" />
 		<script src="ui/cdn-cgi/apps/head/1sZCq7BECvDgKDoo_5GdSy-HJEo.js"></script><link rel="shortcut icon" href="favicon.ico"/>

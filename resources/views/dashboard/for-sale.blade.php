@@ -57,6 +57,12 @@
                         <p>Add Content</p>
                     </a>
                 </li>
+								<li>
+										<a href="/system-administrators/Slide-show">
+												<i class="ti-panel"></i>
+												<p>Slide Show</p>
+										</a>
+								</li>
             </ul>
     	</div>
     </div>

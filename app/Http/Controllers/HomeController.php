@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use App\Rent;
-//use App\AddDestination;
+use App\SlideShow;
 //use App\AddDestination;
 use DB;
 
@@ -40,9 +40,14 @@ class HomeController extends Controller
        $rents = Rent::orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.rent', compact('rents'));
     }
-    public function forSale()
-    {
-        return view('dashboard.for-sale');
-    }
+          public function forSale()
+          {
+              return view('dashboard.for-sale');
+          }
+          public function slideShow()
+          {
+                $rents = SlideShow::orderBy('created_at', 'desc')->paginate(10);
+              return view('dashboard.slideShow', compact('rents'));
+          }
 
 }

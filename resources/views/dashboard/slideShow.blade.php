@@ -51,19 +51,18 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/system-administrators/rent">
                         <i class="ti-panel"></i>
                         <p>Add Content</p>
                     </a>
                 </li>
-								<li>
-										<a href="/system-administrators/slide-show">
-												<i class="ti-panel"></i>
-												<p>Slide Show</p>
-										</a>
-								</li>
-
+								<li class="active">
+ 										<a href="/system-administrators/slide-show">
+ 												<i class="ti-panel"></i>
+ 												<p>Slide Show</p>
+ 										</a>
+ 								</li>
             </ul>
     	</div>
     </div>
@@ -78,7 +77,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Rent</a>
+                    <a class="navbar-brand" href="#">Slide Show</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -138,24 +137,20 @@
 			@if(count($rents) > 0)
 			 <table class="table table-striped">
 					 <tr>
-							 <th>Reference ID</th>
-							 <th>Open</th>
+							 <th>Image</th>
 							 <th>Delete</th>
-							 <th>Rent (category)</th>
 							 <th>Duration</th>
 					 </tr>
 					 @foreach($rents as $message)
 					<tr>
-					<td><a href="/admin-rent/{{$message->id}}">{{$message->reference}}</a></td>
-					<td><a href="/admin-rent/{{$message->id}}" class="btn btn-success"><span class="fa fa-edit"></span> Open</a></td>
+					<td><img src="/img/slideshow_images/{{$message->slideshow}}" alt="{{$message->slideshow}}"class="rounded float-left" width="250px;"></td>
 					<td>
-				<form action="/admin-rent/{{$message->id}}" method="POST">
+				<form action="/slide-show/{{$message->id}}" method="POST">
 				{{ csrf_field()}}
 				{{ method_field('DELETE')}}
 				<button type="submit" value="delete" name="Delete" class="btn btn-danger"><span class="fa fa-remove"></span> Delete</button>
 				</form>
 				</td>
-					<td>{{$message->whatIsItFor}}</td>
 					<td>{{$message->created_at->diffForHumans()}}</td>
 				</tr>
 				@endforeach
@@ -207,7 +202,19 @@
 										        </button>
 										      </div>
 										      <div class="modal-body">
-										        @include('inc.addForRent')
+														{!! Form::open(['action' => 'SlideShowCtrl@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+														{{ csrf_field() }}
+														<div class="row">
+																<div class="col-md-8">
+																		<div class="form-group border-input">
+																				<label>Add Image to Slide Show</label>
+																				{{Form::file('slideshow')}}
+
+																		</div>
+																</div>
+														</div>
+													{{Form::submit('Upload', ['class'=>'btn btn-info btn-fill btn-wd'])}}
+													{!! Form::close() !!}
 										      </div>
 										      <div class="modal-footer">
 										        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

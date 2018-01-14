@@ -127,8 +127,8 @@
            @foreach($images as $image)
 
             <div data-p="150.00">
-                <a href="hot-deals/{{ $image->photo_slug}}"><img data-u="image" src="../../img/slider_images/{{ $image->image }}" alt="{{ $image->photo_slug}}" /></a>
-                <a href="hot-deals/{{ $image->photo_slug}}"><img data-u="thumb" src="../../img/slider_images/{{ $image->image }}" alt="{{ $image->photo_slug}}" /></a>
+                <img data-u="image" src="../../img/slideshow_images/{{ $image->slideshow }}" alt="Virginia Freelance Property Agent" />
+                <img data-u="thumb" src="../../img/slideshow_images/{{ $image->slideshow }}" alt="Virginia Freelance Property Agent" />
             </div>
           @endforeach
       </table>

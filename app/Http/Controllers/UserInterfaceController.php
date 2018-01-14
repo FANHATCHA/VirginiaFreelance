@@ -9,7 +9,7 @@ use App\AddDestination;
 use App\Rent;
 use App\ForSale;
 use App\AddPhoto;
-
+use App\SlideShow;
 use DB;
 
 class UserInterfaceController extends Controller
@@ -21,7 +21,7 @@ class UserInterfaceController extends Controller
       /**Hot deals display**/
       $hotdeals = Rent::orderBy('created_at', 'desc')->Paginate(20);
 
-      $images = DB::table('add_photos')
+      $images = DB::table('slide_shows')
      ->orderBy('created_at', 'desc')
      ->get();
 
